@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosaic of Memories</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/icon.png" type="image/png">
+    <style>
+        body {
+            background-color: #EBEBEB;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* Styling the button */
+        .image-button {
+            background-color: transparent; /* No background */
+            border: none; /* Remove border */
+            padding: 0; /* Remove padding */
+            cursor: pointer; /* Pointer cursor on hover */
+            outline: none; /* Remove the default outline when focused */
+        }
+
+        /* Styling the image */
+        .image-button img {
+            width: 50px; /* Adjust width */
+            height: auto; /* Maintain aspect ratio */
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth hover effect */
+        }
+
+        /* Add hover effect */
+        .image-button:hover img {
+            transform: scale(1.3); /* Slight zoom on hover */
+            opacity: 0.8; /* Change opacity on hover */
+        }
+
+        /* Add active state effect (when button is clicked) */
+        .image-button:active img {
+            transform: scale(0.95); /* Slight shrink on click */
+        }
+
+        .sidenav {
+    height: 100%; /* Full height */
+    width: 250px; /* Default width */
+    position: fixed; /* Stay in place */
+    top: 0; /* Stay at the top */
+    left: 0; /* Align to the left */
+    background-color: #BFBFBF; /* Background color */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    padding-top: 60px; /* Space from the top */
+    color: #f1f1f1; /* Text color */
+    display: none; /* Initially hidden */
+    flex-direction: column; /* Stack children vertically */
+    /* transition: width 0.5s; Remove transition here */
+}
+
+.sidenav.open {
+    display: flex; /* Show sidenav as flex when open */
+}
+
+
+        .card {
+            background-color: #fff; /* Background color of card */
+            border-radius: 40px; /* Rounded corners */
+            padding: 15px; /* Padding inside the card */
+            padding-top: 20%;
+            width: 88%;
+            height: calc(100% - 60px); /* Elongate the card till it reaches the bottom */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8); /* Box shadow for depth */
+            overflow-y: auto; /* Enable vertical scroll if content overflows */
+        }
+
+        /* Sidenav links styling */
+        .sidenav a {
+            padding: 10px 15px; /* Padding for links */
+            text-decoration: none; /* Remove underline */
+            font-size: 25px; /* Font size */
+            color: #818181; /* Link color */
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            transition: 0.3s; /* Transition effect */
+            width: 100%; /* Full width for links */
+        }
+
+        /* Sidenav link hover effect */
+        .sidenav a:hover {
+            color: #3A6EA5; /* Change color on hover */
+        }
+
+        /* Close button styling */
+        .closebtn {
+            position: absolute; /* Position relative to sidenav */
+            top: 20px; /* Distance from the top */
+            right: 25px; /* Distance from the right */
+            font-size: 36px; /* Font size */
+            color: #818181; /* Color */
+            cursor: pointer; /* Pointer cursor */
+        }
+
+        .image-button img {
+            width: 50px; /* Adjust width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .logoHolder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Horizontal center */
+            align-items: center;     /* Vertical center */
+        }
+
+        /* Logo styling */
+        .sidenav .logoHolder img.logo {
+            width: 80%; /* Set logo width to 80% of sidenav width */
+            max-width: 200px; /* Set a maximum width for the logo */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 10%;
+        }
+
+        .sidenav img.link-icon {
+            width: 30px; /* Set width for link images */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 10px; /* Space between image and text */
+        }
+
+        .controls-div {
+            display: flex;
+            flex-direction: column;
+            background-color: #004E98;
+            margin: 5%;
+            border-radius: 10px;
+        }
+
+        .controls-div .controls {
+            display: flex;
+            flex-direction: row;
+            padding: 5%;
+            gap: 15%;
+        }
+
+        .controls-div .controls img {
+            width: 50px; /* Adjust width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .controls-div .controls h3 {
+            width: 20%;
+            text-align: center;
+        }
+
+        .control-btn {
+            background-color: #4CAF50; /* Green background */
+            border: none;
+            color: white;
+            width: 30%;
+            height: 10%;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .updates-div {
+            display: flex;
+            flex-direction: column;
+            background-color: #004E98;
+            margin: 5%;
+            border-radius: 10px;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .updates-div img {
+            width: 100px; /* Adjust width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .updates-div p {
+            /* lalagyan pa */
+        }
+
+        .updates-div h3 {
+            /* lalagyan pa */
+        }
+
+        .history-btn {
+            background-color: #4CAF50; /* Green background */
+            border: none;
+            color: white;
+            width: 30%;
+            height: 10%;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="image-button" onclick="openNav()">
+            <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/sidenav.png" alt="Menu Button">
+        </button>
+    </header>
+
+    <div id="mySidenav" class="sidenav">
+        <span class="closebtn" onclick="closeNav()">&times;</span> <!-- Close button -->
+        <div class="logoHolder">
+            <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/logo.png" alt="Logo" class="logo"> 
+        </div>
+
+        <div class="card">
+            <a href="#">
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/home-icon-silhouette.png" alt="Home" class="link-icon"> Home
+            </a>
+            <a href="#">
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/info-button.png" alt="About" class="link-icon"> About
+            </a>
+            <a href="#">
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/settings.png" alt="Gallery" class="link-icon"> Controls
+            </a>
+            <a href="#">
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/user.png" alt="Contact" class="link-icon"> Contact
+            </a>
+        </div>
+    </div>
+
+    <section id="Home">
+        <div class="logoHolder">
+            <img class="logo" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/logo.png" alt="Mosaic of Memories Logo">
+            <p class="tagline">Weaving Together the Threads of Time</p>
+        </div>
+    </section>
+
+    <section id="Updates and Controls">
+        <h1 class="title">CONTROLS</h1>
+        <div class="controls-div">
+            <div class="controls">
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/lamp.png" alt="Lights Icon">
+                <h3>Light</h3>
+                <button class="control-btn" id="lightBtn" onclick="toggleLight()">Off</button>
+            </div>
+            <div class="controls">
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/laser.png" alt="Laser Icon">
+                <h3>Laser</h3>
+                <button class="control-btn" id="laserBtn" onclick="toggleLaser()">Off</button>
+            </div>
+            <div class="controls">
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/door.png" alt="Door Icon">
+                <h3>Entrance</h3>
+                <button class="control-btn" id="entranceBtn" onclick="toggleEntrance()">Closed</button>
+            </div>
+            <div class="controls">
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/door.png" alt="Door Icon">
+                <h3>Entrance</h3>
+                <button class="control-btn" id="exitBtn" onclick="toggleExit()">Closed</button>
+            </div>
+        </div>
+        <h1 class="title">UPDATES</h1>
+        <div class="updates-div">
+            <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/people.png" alt="Lights Icon">
+            <p>Museum Capacity Update</p>
+            <h3>0/30</h3>
+            <button class="history-btn" id="historyBtn" onclick="openHistory()">History</button>
+        </div>
+    </section>
+
+    <section id="About">
+        <h2>Section 3: About Us</h2>
+        <p>Use this section to provide information about the project, the team behind it, or the history of the Mosaic of Memories.</p>
+    </section>
+
+    <section id="Contacts">
+        <h2>Section 4: Contact</h2>
+        <p>This section can contain contact information, a form to reach out, or links to social media for visitors to get in touch.</p>
+    </section>
+
+    <script>
+        /* Function to open the sidenav */
+        function openNav() {
+            const sidenav = document.getElementById("mySidenav");
+            sidenav.style.display = "flex"; // Show sidenav as flex
+            sidenav.style.width = "250px"; // Set width to 250px
+        }
+
+        /* Function to close the sidenav */
+        function closeNav() {
+            const sidenav = document.getElementById("mySidenav");
+            sidenav.style.width = "0"; // Set width to 0
+        }
+
+        function toggleLight() {
+            const button = document.getElementById("lightBtn");
+            if (button.innerHTML === "Off") {
+                button.innerHTML = "On";
+            } else {
+                button.innerHTML = "Off"; // Toggle back
+            }
+        }
+
+        function toggleLaser() {
+            const button = document.getElementById("laserBtn");
+            if (button.innerHTML === "Off") {
+                button.innerHTML = "On";
+            } else {
+                button.innerHTML = "Off"; // Toggle back
+            }
+        }
+
+        function toggleEntrance() {
+            const button = document.getElementById("entranceBtn");
+            if (button.innerHTML === "Closed") {
+                button.innerHTML = "Open";
+            } else {
+                button.innerHTML = "Closed"; // Toggle back
+            }
+        }
+
+        function toggleExit() {
+            const button = document.getElementById("exitBtn");
+            if (button.innerHTML === "Closed") {
+                button.innerHTML = "Open";
+            } else {
+                button.innerHTML = "Closed"; // Toggle back
+            }
+        }
+    </script>
+</body>
+</html>
