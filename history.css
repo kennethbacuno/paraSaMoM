@@ -1,0 +1,102 @@
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: #f3f3f3;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+}
+
+.image-button {
+    background-color: transparent; /* No background */
+    border: none; /* Remove border */
+    padding: 0; /* Remove padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    outline: none; /* Remove the default outline when focused */
+}
+
+/* Styling the image */
+.image-button img {
+    width: 50px; /* Adjust width */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth hover effect */
+}
+
+/* Add hover effect */
+.image-button:hover img {
+    transform: scale(1.3); /* Slight zoom on hover */
+    opacity: 0.8; /* Change opacity on hover */
+}
+
+/* Add active state effect (when button is clicked) */
+.image-button:active img {
+    transform: scale(0.95); /* Slight shrink on click */
+}
+
+.table-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fdf5e6;
+    padding: 20px;
+    border: 2px solid #a88a64;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #704214;
+    margin-bottom: 20px;
+}
+
+.museum-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+.museum-table th, .museum-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #a88a64;
+}
+
+.museum-table th {
+    background-color: #a88a64;
+    color: white;
+}
+
+.museum-table tr:nth-child(even) {
+    background-color: #f3e9dd;
+}
+
+.museum-table tr:hover {
+    background-color: #e4d7c0;
+}
+
+.museum-table td {
+    color: #704214;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .table-container {
+        padding: 10px;
+        border-width: 1px;
+    }
+
+    .museum-table {
+        font-size: 16px;
+    }
+
+    .museum-table th, .museum-table td {
+        padding: 8px 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+}
