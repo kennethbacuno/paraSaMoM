@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <button class="image-button" onclick="openNav()">
+        <button class="image-button" id="backBtn" onclick="returnToHome()">
             <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/back.png" alt="Menu Button">
         </button>
     </header>
@@ -51,5 +51,14 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        var backBtn = document.getElementById("backBtn");
+        // Add a click event listener to the button
+        backBtn.addEventListener("click", function() {
+            // Redirect to the new HTML file
+            window.location.href = "index.html";
+        });
+    </script>
 </body>
 </html>
