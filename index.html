@@ -6,9 +6,23 @@
     <link rel="icon" href="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/icon.png" type="image/png">
     <style>
         body {
-            background-color: #EBEBEB;
+            background-color: #b5aa9d;
             margin: 0;
             font-family: Arial, sans-serif;
+        }
+
+        .mom-title-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Horizontal center */
+            align-items: center;     /* Vertical center */
+        }
+
+        .mom-title{
+            width: 80%; /* Set logo width to 80% of sidenav width */
+            max-width: 80%; /* Set a maximum width for the logo */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 5px; 
         }
         /* Styling the button */
         .image-button {
@@ -38,27 +52,27 @@
         }
 
         .sidenav {
-    height: 100%; /* Full height */
-    width: 250px; /* Default width */
-    position: fixed; /* Stay in place */
-    top: 0; /* Stay at the top */
-    left: 0; /* Align to the left */
-    background-color: #BFBFBF; /* Background color */
-    overflow-x: hidden; /* Hide horizontal scrollbar */
-    padding-top: 60px; /* Space from the top */
-    color: #f1f1f1; /* Text color */
-    display: none; /* Initially hidden */
-    flex-direction: column; /* Stack children vertically */
-    /* transition: width 0.5s; Remove transition here */
-}
+            height: 100%; /* Full height */
+            width: 250px; /* Default width */
+            position: fixed; /* Stay in place */
+            top: 0; /* Stay at the top */
+            left: 0; /* Align to the left */
+            background-color: #747274; /* Background color */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            padding-top: 60px; /* Space from the top */
+            color: #000000; /* Text color */
+            display: none; /* Initially hidden */
+            flex-direction: column; /* Stack children vertically */
+            /* transition: width 0.5s; Remove transition here */
+        }
 
-.sidenav.open {
-    display: flex; /* Show sidenav as flex when open */
-}
+        .sidenav.open {
+            display: flex; /* Show sidenav as flex when open */
+        }
 
 
         .card {
-            background-color: #fff; /* Background color of card */
+            background-color: #b9b7a7; /* Background color of card */
             border-radius: 40px; /* Rounded corners */
             padding: 15px; /* Padding inside the card */
             padding-top: 20%;
@@ -82,7 +96,7 @@
 
         /* Sidenav link hover effect */
         .sidenav a:hover {
-            color: #3A6EA5; /* Change color on hover */
+            color: #4e5166; /* Change color on hover */
         }
 
         /* Close button styling */
@@ -91,7 +105,7 @@
             top: 20px; /* Distance from the top */
             right: 25px; /* Distance from the right */
             font-size: 36px; /* Font size */
-            color: #818181; /* Color */
+            color: #4e5166; /* Color */
             cursor: pointer; /* Pointer cursor */
         }
 
@@ -124,9 +138,13 @@
         .controls-div {
             display: flex;
             flex-direction: column;
-            background-color: #004E98;
+            background-color: #7c90a0;
             margin: 5%;
             border-radius: 10px;
+        }
+
+        .title {
+            text-align: center;
         }
 
         .controls-div .controls {
@@ -164,7 +182,7 @@
         .updates-div {
             display: flex;
             flex-direction: column;
-            background-color: #004E98;
+            background-color: #7c90a0;
             margin: 5%;
             border-radius: 10px;
             align-items: center;
@@ -198,6 +216,121 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
+        .description p {
+        font-size: 1.2em; /* Font size for description */
+        color: #333; /* Dark text color */
+        line-height: 1.8; /* Line height for readability */
+        text-align: justify; /* Justify text */
+    }
+
+    .features-section h2 {
+        font-size: 2em; /* Large font for features heading */
+        color: #4e5166; /* Lighter blue */
+        margin-top: 30px;
+        text-align: center; /* Center heading */
+    }
+
+    .features-section ul {
+        list-style-type: none; /* Remove default list bullets */
+        padding-left: 0; /* Remove left padding */
+    }
+
+    .features-section ul li {
+        font-size: 1.2em; /* Larger font size for key features */
+        background-color: #b9b7a7; /* Light gray background for each feature */
+        padding: 10px 20px; /* Padding inside each list item */
+        margin: 10px 0; /* Space between list items */
+        border-radius: 10px; /* Rounded corners for list items */
+        color: #333; /* Text color */
+    }
+
+    .video-section {
+        margin-top: 30px; /* Space above video section */
+        text-align: center; /* Center video section content */
+    }
+
+    .video-section h2 {
+        font-size: 2em; /* Larger font for video heading */
+        color: #4e5166; /* Darker blue */
+        margin-bottom: 20px;
+    }
+
+    .video-section p {
+        font-size: 1.2em; /* Font size for description above video */
+        margin-bottom: 20px; /* Space between text and video */
+    }
+
+    video {
+        border: 5px solid #4e5166; /* Border around video */
+        border-radius: 10px; /* Rounded corners for video */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for video */
+        width: 90%;
+        height: auto;
+    }
+
+    #team {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        h2, h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .leader, .members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .info h4 {
+            margin: 10px 0 5px;
+        }
+
+        .info a {
+            color: #004E98;
+            text-decoration: none;
+        }
+
+        .info a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .profile {
+                width: 45%; /* Expand the profile section to take more space on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile {
+                width: 100%; /* Full-width profile for very small screens */
+            }
+        }
     </style>
 </head>
 <body>
@@ -214,29 +347,32 @@
         </div>
 
         <div class="card">
-            <a href="#">
+            <a href="#Home" onclick="navigateTo('Home')">
                 <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/home-icon-silhouette.png" alt="Home" class="link-icon"> Home
             </a>
-            <a href="#">
+            <a href="#AboutMoM" onclick="navigateTo('AboutMoM')">
                 <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/info-button.png" alt="About" class="link-icon"> About
             </a>
-            <a href="#">
-                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/settings.png" alt="Gallery" class="link-icon"> Controls
+            <a href="#Controls" onclick="navigateTo('Controls')">
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/settings.png" alt="Controls" class="link-icon"> Controls
             </a>
-            <a href="#">
+            <a href="#AboutUs" onclick="navigateTo('AboutUs')">
                 <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/user.png" alt="Contact" class="link-icon"> Contact
             </a>
         </div>
     </div>
 
-    <section id="Home">
+    <section id="Home" class="content-section">
         <div class="logoHolder">
             <img class="logo" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/logo.png" alt="Mosaic of Memories Logo">
             <p class="tagline">Weaving Together the Threads of Time</p>
         </div>
     </section>
 
-    <section id="Updates and Controls">
+    <section id="Controls" class="content-section"> <!-- Updated ID from "Updates and Controls" to "Controls" -->
+        <div class="mom-title-container">
+            <img class="mom-title" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/mom_name.png" alt="Mosaic of Memories">
+        </div>
         <h1 class="title">CONTROLS</h1>
         <div class="controls-div">
             <div class="controls">
@@ -269,29 +405,197 @@
         </div>
     </section>
 
-    <section id="About">
-        <h2>Section 3: About Us</h2>
-        <p>Use this section to provide information about the project, the team behind it, or the history of the Mosaic of Memories.</p>
+    <section id="AboutMoM" class="content-section">
+        <div class="mom-title-container">
+            <img class="mom-title" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/mom_name.png" alt="Mosaic of Memories">
+        </div>
+        <!-- Description of MoM -->
+    <div class="description">
+        <p>
+            The <strong>Mosaic of Memories (MoM)</strong> is a unique and immersive museum experience that intertwines 
+            technology with art. Designed to enhance visitor interaction while ensuring security, MoM offers 
+            a futuristic exhibition space where art preservation meets modern innovation. By incorporating 
+            cutting-edge features like automated lighting, sensor-based security, and controlled door systems, 
+            MoM ensures that every visitor enjoys a seamless and engaging experience.
+        </p>
+    </div>
+
+    <!-- Key Features Section -->
+    <div class="features-section">
+        <h2>Key Features</h2>
+        <ul>
+            <li><strong>Automated/Controlled Lighting:</strong> Dynamic lighting control system that enhances the ambiance of the gallery, adjustable manually or automatically based on presence detection.</li>
+            <li><strong>Laser and Ultrasonic Sensor with Buzzer for Art Security:</strong> Advanced security setup that uses lasers and ultrasonic sensors to monitor art pieces. If an intruder is detected, a buzzer alerts the authorities, ensuring maximum protection.</li>
+            <li><strong>Automated/Controlled Doors:</strong> Door systems that can be opened and closed manually or automatically, offering both security and convenience for visitors and staff.</li>
+        </ul>
+    </div>
+
+    <!-- Video Montage of the MoM Miniature -->
+    <div class="video-section">
+        <h2>MoM Miniature Montage</h2>
+        <p>Explore a video montage of the MoM miniature, showcasing its key features and layout in action:</p>
+        <video controls width="640" height="360" poster="https://example.com/poster-image.jpg">
+            <source src="https://example.com/mom-miniature-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
     </section>
 
-    <section id="Contacts">
-        <h2>Section 4: Contact</h2>
-        <p>This section can contain contact information, a form to reach out, or links to social media for visitors to get in touch.</p>
+    <section id="AboutUs" class="content-section">
+        <div class="mom-title-container">
+            <img class="mom-title" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/mom_name.png" alt="Mosaic of Memories">
+        </div>
+        <h2>Project Team: Mosaic of Memories</h2>
+    
+    <div class="leader">
+        <h3>Leader</h3>
+        <div class="profile">
+            <img src="https://via.placeholder.com/150" alt="Leader Profile Picture">
+            <div class="info">
+                <h4>Christian C. Angcaya</h4>
+                <p>Email: <a href="mailto:angcayachristian2004@gmail.com">angcayachristian2004@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <h3>Members</h3>
+    <div class="members">
+        <div class="profile">
+            <img src="https://via.placeholder.com/150" alt="Pamela Jane Profile Picture">
+            <div class="info">
+                <h4>Pamela Jane T. Babejes</h4>
+                <p>Email: <a href="mailto:pamelajanetopularbabejes@gmail.com">pamelajanetopularbabejes@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="https://via.placeholder.com/150" alt="Abner Kenneth Profile Picture">
+            <div class="info">
+                <h4>Abner Kenneth Y. Bacuño</h4>
+                <p>Email: <a href="mailto:bacunoabnerkenneth@gmail.com">bacunoabnerkenneth@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="https://via.placeholder.com/150" alt="Jera Clarisse Profile Picture">
+            <div class="info">
+                <h4>Jera Clarisse E. Canoy</h4>
+                <p>Email: <a href="mailto:jeraclarisse@gmail.com">jeraclarisse@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="https://via.placeholder.com/150" alt="Emil J. Dar Profile Picture">
+            <div class="info">
+                <h4>Emil J. Dar</h4>
+                <p>Email: <a href="#">Email not provided</a></p>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="https://via.placeholder.com/150" alt="Sean Niel Profile Picture">
+            <div class="info">
+                <h4>Sean Niel S. Dizon</h4>
+                <p>Email: <a href="mailto:saynoseanniel@gmail.com">saynoseanniel@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="https://via.placeholder.com/150" alt="Frances Fiona Profile Picture">
+            <div class="info">
+                <h4>Frances Fiona P. Labrador</h4>
+                <p>Email: <a href="mailto:francesfionalabrador@gmail.com">francesfionalabrador@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="https://via.placeholder.com/150" alt="Dhween J. Magno Profile Picture">
+            <div class="info">
+                <h4>Dhween J. Magno</h4>
+                <p>Email: <a href="mailto:dhweenmagno03@gmail.com">dhweenmagno03@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
     </section>
 
     <script>
-        /* Function to open the sidenav */
-        function openNav() {
-            const sidenav = document.getElementById("mySidenav");
-            sidenav.style.display = "flex"; // Show sidenav as flex
-            sidenav.style.width = "250px"; // Set width to 250px
+        function sendRequest(url, elementId, message) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(message);
+                }
+            };
+            xhr.send();
         }
 
-        /* Function to close the sidenav */
-        function closeNav() {
-            const sidenav = document.getElementById("mySidenav");
-            sidenav.style.width = "0"; // Set width to 0
+        function toggleLight() {
+            const button = document.getElementById("lightBtn");
+            if (button.innerHTML === "Off") {
+                button.innerHTML = "On";
+                sendRequest("/on/light", "lightStatus", "naka on na");
+            } else {
+                button.innerHTML = "Off";
+                sendRequest("/off/light", "lightStatsus", "naka off na");
+            }
         }
+
+        function toggleLaser() {
+            const button = document.getElementById("laserBtn");
+            if (button.innerHTML === "Off") {
+                button.innerHTML = "On";
+                sendRequest("/on/laser", "laserStatus", "naka on na");
+            } else {
+                button.innerHTML = "Off";
+                sendRequest("/off/laser", "laserStatsus", "naka off na");
+            }
+        }
+
+        function toggleEntrance() {
+            const button = document.getElementById("entranceBtn");
+            if (button.innerHTML === "Closed") {
+                button.innerHTML = "Open";
+                sendRequest("/on/entrance", "entranceStatus", "naka open na");
+            } else {
+                button.innerHTML = "Closed";
+                sendRequest("/closed/entrance", "entranceStatsus", "naka closed na");
+            }
+        }
+
+        function toggleExit() {
+            const button = document.getElementById("exitBtn");
+            if (button.innerHTML === "Closed") {
+                button.innerHTML = "Open";
+                sendRequest("/on/exit", "exitStatus", "naka open na");
+            } else {
+                button.innerHTML = "Closed";
+                sendRequest("/closed/exit", "exitStatsus", "naka closed na");
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").classList.add('open');
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").classList.remove('open');
+        }
+
+        function navigateTo(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.style.display = 'none');
+            
+            // Show the clicked section
+            document.getElementById(sectionId).style.display = 'block';
+            closeNav(); // Close the sidenav after navigating
+        }
+
+        // Show the homepage section by default
+        document.addEventListener("DOMContentLoaded", function() {
+            navigateTo('Home');
+        });
 
         function toggleLight() {
             const button = document.getElementById("lightBtn");
