@@ -138,6 +138,7 @@ body.push {
 
 .controls-div {
     display: flex;
+    font-family: sans-serif;
     flex-direction: column;
     background-color: #704214;
     color: white;
@@ -182,6 +183,7 @@ body.push {
 }
 
 .updates-div {
+    font-family: sans-serif;
     display: flex;
     flex-direction: column;
     background-color: #704214;
