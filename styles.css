@@ -139,7 +139,8 @@ body.push {
 .controls-div {
     display: flex;
     flex-direction: column;
-    background-color: #7c90a0;
+    background-color: #704214;
+    color: white;
     margin: 5%;
     border-radius: 10px;
 }
@@ -166,7 +167,7 @@ body.push {
 }
 
 .control-btn {
-    background-color: #4CAF50; /* Green background */
+    background-color: #a88a64; /* Green background */
     border: none;
     color: white;
     width: 30%;
@@ -183,7 +184,8 @@ body.push {
 .updates-div {
     display: flex;
     flex-direction: column;
-    background-color: #7c90a0;
+    background-color: #704214;
+    color: white;
     margin: 5%;
     border-radius: 10px;
     align-items: center;
@@ -204,7 +206,7 @@ body.push {
 }
 
 .history-btn {
-    background-color: #4CAF50; /* Green background */
+    background-color: #a88a64; /* Green background */
     border: none;
     color: white;
     width: 30%;
