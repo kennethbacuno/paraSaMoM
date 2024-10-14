@@ -36,12 +36,12 @@ function toggleEntrance() {
         button.innerHTML = "Open";
         button.style.backgroundColor = '#B9B7A7';
         button.style.color = '#000'
-        button.setAttribute('href', '/entrance_open');
+        button.setAttribute('href', '/entrance_servo_on');
     } else {
         button.innerHTML = "Closed";
         button.style.backgroundColor = '#737373';
         button.style.color = '#fff'
-        button.setAttribute('href', '/entrance_closed');
+        button.setAttribute('href', '/entrance_servo_off');
     }
 }
 
@@ -51,12 +51,12 @@ function toggleExit() {
         button.innerHTML = "Open";
         button.style.backgroundColor = '#B9B7A7';
         button.style.color = '#000'
-        button.setAttribute('href', '/exit_open');
+        button.setAttribute('href', '/exit_servo_on');
     } else {
         button.innerHTML = "Closed";
         button.style.backgroundColor = '#737373';
         button.style.color = '#fff'
-        button.setAttribute('href', '/exit_closed');
+        button.setAttribute('href', '/exit_servo_off');
     }
 }
 
