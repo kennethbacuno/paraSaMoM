@@ -4,8 +4,14 @@ function toggleLight() {
     const button = document.getElementById("lightBtn");
     if (button.innerHTML === "Off") {
         button.innerHTML = "On";
+        button.style.backgroundColor = '#B9B7A7';
+        button.style.color = '#000'
+        button.setAttribute('href', '/lights_on');
     } else {
         button.innerHTML = "Off";
+        button.style.backgroundColor = '#737373';
+        button.style.color = '#fff'
+        button.setAttribute('href', '/lights_off');
     }
 }
 
@@ -13,8 +19,14 @@ function toggleLaser() {
     const button = document.getElementById("laserBtn");
     if (button.innerHTML === "Off") {
         button.innerHTML = "On";
+        button.style.backgroundColor = '#B9B7A7';
+        button.style.color = '#000'
+        button.setAttribute('href', '/laser_on');
     } else {
         button.innerHTML = "Off";
+        button.style.backgroundColor = '#737373';
+        button.style.color = '#fff'
+        button.setAttribute('href', '/laser_off');
     }
 }
 
@@ -22,8 +34,14 @@ function toggleEntrance() {
     const button = document.getElementById("entranceBtn");
     if (button.innerHTML === "Closed") {
         button.innerHTML = "Open";
+        button.style.backgroundColor = '#B9B7A7';
+        button.style.color = '#000'
+        button.setAttribute('href', '/entrance_open');
     } else {
         button.innerHTML = "Closed";
+        button.style.backgroundColor = '#737373';
+        button.style.color = '#fff'
+        button.setAttribute('href', '/entrance_closed');
     }
 }
 
@@ -31,8 +49,14 @@ function toggleExit() {
     const button = document.getElementById("exitBtn");
     if (button.innerHTML === "Closed") {
         button.innerHTML = "Open";
+        button.style.backgroundColor = '#B9B7A7';
+        button.style.color = '#000'
+        button.setAttribute('href', '/exit_open');
     } else {
         button.innerHTML = "Closed";
+        button.style.backgroundColor = '#737373';
+        button.style.color = '#fff'
+        button.setAttribute('href', '/exit_closed');
     }
 }
 
