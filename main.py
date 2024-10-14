@@ -32,51 +32,50 @@ def index():
 
 @app.route('/entrance_servo_on', methods=['GET'])
 def entrance_turn_on_servo():
-    try:
-        requests.get(f'{ESP8266_IP}/entrance_servo_on')
-        return jsonify({"status": "success", "message": "Entrance servo turned on."}), 200
-    except requests.exceptions.RequestException as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+    return control_servo('entrance_servo_on', "Entrance servo turned on.")
 
 @app.route('/entrance_servo_off', methods=['GET'])
 def entrance_turn_off_servo():
-    try:
-        requests.get(f'{ESP8266_IP}/entrance_servo_off')
-        return jsonify({"status": "success", "message": "Entrance servo turned off."}), 200
-    except requests.exceptions.RequestException as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+    return control_servo('entrance_servo_off', "Entrance servo turned off.")
 
 @app.route('/exit_servo_on', methods=['GET'])
 def exit_turn_on_servo():
-    try:
-        requests.get(f'{ESP8266_IP}/exit_servo_on')
-        return jsonify({"status": "success", "message": "Exit servo turned on."}), 200
-    except requests.exceptions.RequestException as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+    return control_servo('exit_servo_on', "Exit servo turned on.")
 
 @app.route('/exit_servo_off', methods=['GET'])
 def exit_turn_off_servo():
-    try:
-        requests.get(f'{ESP8266_IP}/exit_servo_off')
-        return jsonify({"status": "success", "message": "Exit servo turned off."}), 200
-    except requests.exceptions.RequestException as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+    return control_servo('exit_servo_off', "Exit servo turned off.")
 
 @app.route('/laser_on', methods=['GET'])
 def laser_turn_on():
-    try:
-        requests.get(f'{ESP8266_IP}/laser_on')
-        return jsonify({"status": "success", "message": "Laser turned on."}), 200
-    except requests.exceptions.RequestException as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+    return control_device('laser_on', "Laser turned on.")
 
 @app.route('/laser_off', methods=['GET'])
 def laser_turn_off():
+    return control_device('laser_off', "Laser turned off.")
+
+@app.route('/lights_on', methods=['GET'])
+def lights_turn_on():
+    return control_device('lights_on', "Lights turned on.")
+
+@app.route('/lights_off', methods=['GET'])
+def lights_turn_off():
+    return control_device('lights_off', "Lights turned off.")
+
+def control_device(action, success_message):
+    """Helper function to control devices."""
     try:
-        requests.get(f'{ESP8266_IP}/laser_off')
-        return jsonify({"status": "success", "message": "Laser turned off."}), 200
+        response = requests.get(f'{ESP8266_IP}/{action}')
+        if response.status_code == 200:
+            return jsonify({"status": "success", "message": success_message}), 200
+        else:
+            return jsonify({"status": "error", "message": "Failed to control device."}), 500
     except requests.exceptions.RequestException as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
+def control_servo(action, success_message):
+    """Helper function to control servos."""
+    return control_device(action, success_message)
 
 if __name__ == '__main__':
     create_database()  # Create the database and tables before running the app

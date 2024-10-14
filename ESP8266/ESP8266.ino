@@ -51,6 +51,16 @@ void setup() {
     Serial.println("LASER_OFF");
   });
 
+  server.on("/lights_on", []() {
+    server.send(200, "text/plain", "Lights On");
+    Serial.println("LIGHTS_ON");
+  });
+
+  server.on("/lights_off", []() {
+    server.send(200, "text/plain", "Lights Off");
+    Serial.println("LIGHTS_OFF");
+  });
+
   server.begin();
   Serial.println("Server started");
 }

@@ -127,6 +127,16 @@ void loop() {
       Serial.println("Laser turned off");
       laserState = LOW;
     }
+    else if (command == "LIGHTS_ON") {
+      digitalWrite(relay, HIGH); // Turn the laser on
+      Serial.println("Lights turned on");
+      relayState = HIGH;
+    }
+    else if (command == "LIGHTS_OFF") {
+      digitalWrite(relay, LOW); // Turn the laser off
+      Serial.println("Lights turned off");
+      relayState = LOW;
+    }
   }
 
   // Continuous IR sensor detection loop for entrance
