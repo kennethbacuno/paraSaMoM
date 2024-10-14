@@ -1,6 +1,6 @@
 body {
     font-family: 'Times New Roman', serif;
-    background-color: #f3f3f3;
+    background-color: #b5aa9d;
     color: #333;
     padding: 20px;
     margin: 0;
@@ -56,7 +56,7 @@ h1 {
 
 .museum-table th, .museum-table td {
     padding: 12px 15px;
-    text-align: left;
+    text-align: center;
     border: 1px solid #a88a64;
 }
 
