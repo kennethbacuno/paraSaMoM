@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mosaic of Memories</title>
@@ -7,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
     <header>
         <button class="image-button" onclick="openNav()">
@@ -17,57 +19,64 @@
     <div id="mySidenav" class="sidenav">
         <span class="closebtn" onclick="closeNav()">&times;</span> <!-- Close button -->
         <div class="logoHolder">
-            <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/logo.png" alt="Logo" class="logo"> 
+            <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/logo.png" alt="Logo" class="logo">
         </div>
 
         <div class="card">
             <a href="#Home" onclick="navigateTo('Home')">
-                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/home-icon-silhouette.png" alt="Home" class="link-icon"> Home
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/home-icon-silhouette.png"
+                    alt="Home" class="link-icon"> Home
             </a>
             <a href="#AboutMoM" onclick="navigateTo('AboutMoM')">
-                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/info-button.png" alt="About" class="link-icon"> About
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/info-button.png" alt="About"
+                    class="link-icon"> About
             </a>
             <a href="#Controls" onclick="navigateTo('Controls')">
-                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/settings.png" alt="Controls" class="link-icon"> Controls
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/settings.png" alt="Controls"
+                    class="link-icon"> Controls
             </a>
             <a href="#AboutUs" onclick="navigateTo('AboutUs')">
-                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/user.png" alt="Contact" class="link-icon"> Contact
+                <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/user.png" alt="Contact"
+                    class="link-icon"> Contact
             </a>
         </div>
     </div>
 
     <section id="Home" class="content-section">
         <div class="logoHolder">
-            <img class="logo" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/logo.png" alt="Mosaic of Memories Logo">
+            <img class="logo" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/logo.png"
+                alt="Mosaic of Memories Logo">
             <p class="tagline" style="font-family: 'Cinzel', serif;">Weaving Together the Threads of Time</p>
         </div>
     </section>
 
     <section id="Controls" class="content-section"> <!-- Updated ID from "Updates and Controls" to "Controls" -->
         <div class="mom-title-container">
-            <img class="mom-title" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/mom_name.png" alt="Mosaic of Memories">
+            <img class="mom-title" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/mom_name.png"
+                alt="Mosaic of Memories">
         </div>
         <h1 class="title">CONTROLS</h1>
         <div class="controls-div">
             <div class="controls">
                 <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/lamp.png" alt="Lights Icon">
                 <h3>Light</h3>
-                <button class="control-btn" href="/lights_off" id="lightBtn" onclick="toggleLight()">Off</button>
+                <button class="control-btn" id="lightBtn" onclick="toggleLight()">Off</button>
             </div>
             <div class="controls">
                 <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/laser.png" alt="Laser Icon">
                 <h3>Laser</h3>
-                <button class="control-btn" href="/laser_on" id="laserBtn" onclick="toggleLaser()">On</button>
+                <button class="control-btn" id="laserBtn" onclick="toggleLaser()">On</button>
             </div>
             <div class="controls">
                 <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/door.png" alt="Door Icon">
                 <h3>Entrance</h3>
-                <button class="control-btn" href="/entrance_servo_off" id="entranceBtn" onclick="toggleEntrance()">Closed</button>
+                <button class="control-btn" id="entranceBtn"
+                    onclick="toggleEntrance()">Closed</button>
             </div>
             <div class="controls">
                 <img src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/door.png" alt="Door Icon">
                 <h3>Exit</h3>
-                <button class="control-btn" href="/exit_servo_off" id="exitBtn" onclick="toggleExit()">Closed</button>
+                <button class="control-btn" id="exitBtn" onclick="toggleExit()">Closed</button>
             </div>
         </div>
         <h1 class="title">UPDATES</h1>
@@ -81,117 +90,126 @@
 
     <section id="AboutMoM" class="content-section">
         <div class="mom-title-container">
-            <img class="mom-title" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/mom_name.png" alt="Mosaic of Memories">
+            <img class="mom-title" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/mom_name.png"
+                alt="Mosaic of Memories">
         </div>
         <!-- Description of MoM -->
-    <div class="description">
-        <p>
-            The <strong>Mosaic of Memories (MoM)</strong> is a unique and immersive museum experience that intertwines 
-            technology with art. Designed to enhance visitor interaction while ensuring security, MoM offers 
-            a futuristic exhibition space where art preservation meets modern innovation. By incorporating 
-            cutting-edge features like automated lighting, sensor-based security, and controlled door systems, 
-            MoM ensures that every visitor enjoys a seamless and engaging experience.
-        </p>
-    </div>
+        <div class="description">
+            <p>
+                The <strong>Mosaic of Memories (MoM)</strong> is a unique and immersive museum experience that
+                intertwines
+                technology with art. Designed to enhance visitor interaction while ensuring security, MoM offers
+                a futuristic exhibition space where art preservation meets modern innovation. By incorporating
+                cutting-edge features like automated lighting, sensor-based security, and controlled door systems,
+                MoM ensures that every visitor enjoys a seamless and engaging experience.
+            </p>
+        </div>
 
-    <!-- Key Features Section -->
-    <div class="features-section">
-        <h2>Key Features</h2>
-        <ul>
-            <li><strong>Automated/Controlled Lighting:</strong> Dynamic lighting control system that enhances the ambiance of the gallery, adjustable manually or automatically based on presence detection.</li>
-            <li><strong>Laser and Ultrasonic Sensor with Buzzer for Art Security:</strong> Advanced security setup that uses lasers and ultrasonic sensors to monitor art pieces. If an intruder is detected, a buzzer alerts the authorities, ensuring maximum protection.</li>
-            <li><strong>Automated/Controlled Doors:</strong> Door systems that can be opened and closed manually or automatically, offering both security and convenience for visitors and staff.</li>
-        </ul>
-    </div>
+        <!-- Key Features Section -->
+        <div class="features-section">
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Automated/Controlled Lighting:</strong> Dynamic lighting control system that enhances the
+                    ambiance of the gallery, adjustable manually or automatically based on presence detection.</li>
+                <li><strong>Laser and Ultrasonic Sensor with Buzzer for Art Security:</strong> Advanced security setup
+                    that uses lasers and ultrasonic sensors to monitor art pieces. If an intruder is detected, a buzzer
+                    alerts the authorities, ensuring maximum protection.</li>
+                <li><strong>Automated/Controlled Doors:</strong> Door systems that can be opened and closed manually or
+                    automatically, offering both security and convenience for visitors and staff.</li>
+            </ul>
+        </div>
 
-    <!-- Video Montage of the MoM Miniature -->
-    <div class="video-section">
-        <h2>MoM Miniature Montage</h2>
-        <p>Explore a video montage of the MoM miniature, showcasing its key features and layout in action:</p>
-        <video controls width="640" height="360" poster="https://example.com/poster-image.jpg">
-            <source src="https://example.com/mom-miniature-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+        <!-- Video Montage of the MoM Miniature -->
+        <div class="video-section">
+            <h2>MoM Miniature Montage</h2>
+            <p>Explore a video montage of the MoM miniature, showcasing its key features and layout in action:</p>
+            <video controls width="640" height="360" poster="https://example.com/poster-image.jpg">
+                <source src="https://example.com/mom-miniature-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </section>
 
     <section id="AboutUs" class="content-section">
         <div class="mom-title-container">
-            <img class="mom-title" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/mom_name.png" alt="Mosaic of Memories">
+            <img class="mom-title" src="https://raw.githubusercontent.com/kennethbacuno/paraSaMoM/main/mom_name.png"
+                alt="Mosaic of Memories">
         </div>
         <h2>Project Team: Mosaic of Memories</h2>
-    
-    <div class="leader">
-        <h3>Leader</h3>
-        <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="Leader Profile Picture">
-            <div class="info">
-                <h4>Christian C. Angcaya</h4>
-                <p>Email: <a href="mailto:angcayachristian2004@gmail.com">angcayachristian2004@gmail.com</a></p>
-            </div>
-        </div>
-    </div>
 
-    <h3>Members</h3>
-    <div class="members">
-        <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="Pamela Jane Profile Picture">
-            <div class="info">
-                <h4>Pamela Jane T. Babejes</h4>
-                <p>Email: <a href="mailto:pamelajanetopularbabejes@gmail.com">pamelajanetopularbabejes@gmail.com</a></p>
+        <div class="leader">
+            <h3>Leader</h3>
+            <div class="profile">
+                <img src="https://via.placeholder.com/150" alt="Leader Profile Picture">
+                <div class="info">
+                    <h4>Christian C. Angcaya</h4>
+                    <p>Email: <a href="mailto:angcayachristian2004@gmail.com">angcayachristian2004@gmail.com</a></p>
+                </div>
             </div>
         </div>
 
-        <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="Abner Kenneth Profile Picture">
-            <div class="info">
-                <h4>Abner Kenneth Y. Bacuño</h4>
-                <p>Email: <a href="mailto:bacunoabnerkenneth@gmail.com">bacunoabnerkenneth@gmail.com</a></p>
+        <h3>Members</h3>
+        <div class="members">
+            <div class="profile">
+                <img src="https://via.placeholder.com/150" alt="Pamela Jane Profile Picture">
+                <div class="info">
+                    <h4>Pamela Jane T. Babejes</h4>
+                    <p>Email: <a href="mailto:pamelajanetopularbabejes@gmail.com">pamelajanetopularbabejes@gmail.com</a>
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="Jera Clarisse Profile Picture">
-            <div class="info">
-                <h4>Jera Clarisse E. Canoy</h4>
-                <p>Email: <a href="mailto:jeraclarisse@gmail.com">jeraclarisse@gmail.com</a></p>
+            <div class="profile">
+                <img src="https://via.placeholder.com/150" alt="Abner Kenneth Profile Picture">
+                <div class="info">
+                    <h4>Abner Kenneth Y. Bacuño</h4>
+                    <p>Email: <a href="mailto:bacunoabnerkenneth@gmail.com">bacunoabnerkenneth@gmail.com</a></p>
+                </div>
             </div>
-        </div>
 
-        <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="Emil J. Dar Profile Picture">
-            <div class="info">
-                <h4>Emil J. Dar</h4>
-                <p>Email: <a href="#">Email not provided</a></p>
+            <div class="profile">
+                <img src="https://via.placeholder.com/150" alt="Jera Clarisse Profile Picture">
+                <div class="info">
+                    <h4>Jera Clarisse E. Canoy</h4>
+                    <p>Email: <a href="mailto:jeraclarisse@gmail.com">jeraclarisse@gmail.com</a></p>
+                </div>
             </div>
-        </div>
 
-        <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="Sean Niel Profile Picture">
-            <div class="info">
-                <h4>Sean Niel S. Dizon</h4>
-                <p>Email: <a href="mailto:saynoseanniel@gmail.com">saynoseanniel@gmail.com</a></p>
+            <div class="profile">
+                <img src="https://via.placeholder.com/150" alt="Emil J. Dar Profile Picture">
+                <div class="info">
+                    <h4>Emil J. Dar</h4>
+                    <p>Email: <a href="#">Email not provided</a></p>
+                </div>
             </div>
-        </div>
 
-        <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="Frances Fiona Profile Picture">
-            <div class="info">
-                <h4>Frances Fiona P. Labrador</h4>
-                <p>Email: <a href="mailto:francesfionalabrador@gmail.com">francesfionalabrador@gmail.com</a></p>
+            <div class="profile">
+                <img src="https://via.placeholder.com/150" alt="Sean Niel Profile Picture">
+                <div class="info">
+                    <h4>Sean Niel S. Dizon</h4>
+                    <p>Email: <a href="mailto:saynoseanniel@gmail.com">saynoseanniel@gmail.com</a></p>
+                </div>
             </div>
-        </div>
 
-        <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="Dhween J. Magno Profile Picture">
-            <div class="info">
-                <h4>Dhween J. Magno</h4>
-                <p>Email: <a href="mailto:dhweenmagno03@gmail.com">dhweenmagno03@gmail.com</a></p>
+            <div class="profile">
+                <img src="https://via.placeholder.com/150" alt="Frances Fiona Profile Picture">
+                <div class="info">
+                    <h4>Frances Fiona P. Labrador</h4>
+                    <p>Email: <a href="mailto:francesfionalabrador@gmail.com">francesfionalabrador@gmail.com</a></p>
+                </div>
+            </div>
+
+            <div class="profile">
+                <img src="https://via.placeholder.com/150" alt="Dhween J. Magno Profile Picture">
+                <div class="info">
+                    <h4>Dhween J. Magno</h4>
+                    <p>Email: <a href="mailto:dhweenmagno03@gmail.com">dhweenmagno03@gmail.com</a></p>
+                </div>
             </div>
         </div>
-    </div>
     </section>
 
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+
 </html>

@@ -1,4 +1,5 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, jsonify
+import requests
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -29,53 +30,53 @@ ESP8266_IP = 'http://192.168.1.6'  # Replace with your ESP8266's IP address
 def index():
     return render_template('index.html')
 
-@app.route('/entrance_servo_on')
+@app.route('/entrance_servo_on', methods=['GET'])
 def entrance_turn_on_servo():
     try:
-        response = requests.get(f'{ESP8266_IP}/entrance_servo_on')
-        return redirect(url_for('index'))
+        requests.get(f'{ESP8266_IP}/entrance_servo_on')
+        return jsonify({"status": "success", "message": "Entrance servo turned on."}), 200
     except requests.exceptions.RequestException as e:
-        return f"Error: {e}"
+        return jsonify({"status": "error", "message": str(e)}), 500
 
-@app.route('/entrance_servo_off')
+@app.route('/entrance_servo_off', methods=['GET'])
 def entrance_turn_off_servo():
     try:
-        response = requests.get(f'{ESP8266_IP}/entrance_servo_off')
-        return redirect(url_for('index'))
+        requests.get(f'{ESP8266_IP}/entrance_servo_off')
+        return jsonify({"status": "success", "message": "Entrance servo turned off."}), 200
     except requests.exceptions.RequestException as e:
-        return f"Error: {e}"
+        return jsonify({"status": "error", "message": str(e)}), 500
 
-@app.route('/exit_servo_on')
+@app.route('/exit_servo_on', methods=['GET'])
 def exit_turn_on_servo():
     try:
-        response = requests.get(f'{ESP8266_IP}/exit_servo_on')
-        return redirect(url_for('index'))
+        requests.get(f'{ESP8266_IP}/exit_servo_on')
+        return jsonify({"status": "success", "message": "Exit servo turned on."}), 200
     except requests.exceptions.RequestException as e:
-        return f"Error: {e}"
+        return jsonify({"status": "error", "message": str(e)}), 500
 
-@app.route('/exit_servo_off')
+@app.route('/exit_servo_off', methods=['GET'])
 def exit_turn_off_servo():
     try:
-        response = requests.get(f'{ESP8266_IP}/exit_servo_off')
-        return redirect(url_for('index'))
+        requests.get(f'{ESP8266_IP}/exit_servo_off')
+        return jsonify({"status": "success", "message": "Exit servo turned off."}), 200
     except requests.exceptions.RequestException as e:
-        return f"Error: {e}"
-    
-@app.route('/laser_on')
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/laser_on', methods=['GET'])
 def laser_turn_on():
     try:
-        response = requests.get(f'{ESP8266_IP}/laser_on')
-        return redirect(url_for('index'))
+        requests.get(f'{ESP8266_IP}/laser_on')
+        return jsonify({"status": "success", "message": "Laser turned on."}), 200
     except requests.exceptions.RequestException as e:
-        return f"Error: {e}"
+        return jsonify({"status": "error", "message": str(e)}), 500
 
-@app.route('/laser_off')
+@app.route('/laser_off', methods=['GET'])
 def laser_turn_off():
     try:
-        response = requests.get(f'{ESP8266_IP}/laser_off')
-        return redirect(url_for('index'))
+        requests.get(f'{ESP8266_IP}/laser_off')
+        return jsonify({"status": "success", "message": "Laser turned off."}), 200
     except requests.exceptions.RequestException as e:
-        return f"Error: {e}"
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
     create_database()  # Create the database and tables before running the app
