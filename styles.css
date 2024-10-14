@@ -1,7 +1,6 @@
 body {
     background-color: #b5aa9d;
     margin: 0;
-    font-family: 'Times New Roman', serif;
     transition: margin-left 0.5s; /* Smooth transition for margin */
     padding-left: 0;
 }
@@ -88,6 +87,7 @@ body.push {
     padding: 10px 15px; /* Padding for links */
     text-decoration: none; /* Remove underline */
     font-size: 25px; /* Font size */
+    font-family: 'Cinzel', serif;
     color: #818181; /* Link color */
     display: flex; /* Use flexbox for alignment */
     align-items: center; /* Center items vertically */
@@ -138,9 +138,9 @@ body.push {
 
 .controls-div {
     display: flex;
-    font-family: sans-serif;
     flex-direction: column;
     background-color: #704214;
+    font-family: 'Garamond', 'Times New Roman', serif;
     color: white;
     margin: 5%;
     border-radius: 10px;
@@ -148,6 +148,7 @@ body.push {
 
 .title {
     text-align: center;
+    font-family: 'Cinzel', serif;
 }
 
 .controls-div .controls {
@@ -165,6 +166,7 @@ body.push {
 .controls-div .controls h3 {
     width: 20%;
     text-align: center;
+    font-family: 'Garamond', 'Times New Roman', serif;
 }
 
 .control-btn {
@@ -180,10 +182,10 @@ body.push {
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
+    font-family: 'Cinzel', serif;
 }
 
 .updates-div {
-    font-family: sans-serif;
     display: flex;
     flex-direction: column;
     background-color: #704214;
@@ -200,11 +202,11 @@ body.push {
 }
 
 .updates-div p {
-    /* lalagyan pa */
+    font-family: 'Garamond', 'Times New Roman', serif;
 }
 
 .updates-div h3 {
-    /* lalagyan pa */
+    font-family: 'Cinzel', serif;
 }
 
 .history-btn {
@@ -220,6 +222,7 @@ body.push {
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
+    font-family: 'Cinzel', serif;
 }
 
 .description p {
