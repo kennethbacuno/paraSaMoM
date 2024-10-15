@@ -68,5 +68,13 @@ void setup() {
 void loop() {
   // Handle incoming client requests
   server.handleClient();
+  if (Serial.available()) {
+    String data = Serial.readStringUntil('\n');
+    data.trim();
+    if (data.startsWith("COUNTER:")) {
+      int counterValue = data.substring(8).toInt();
+      Serial.printf("Received counter: %d\n", counterValue);
+    }
+  }
 }
 

@@ -146,6 +146,7 @@ void loop() {
         Serial.println("May pumasok na tao!");
         counter--;
         count();
+        sendCounterToESP();
         lastObjectDetected = true; // Set the flag to indicate an object has been detected
       }
     } else if (irSensorEntranceState == HIGH) { // No object detected
@@ -159,6 +160,7 @@ void loop() {
       Serial.println("May lumabas na tao!");
       counter++;  // Increment counter only if it's less than 100
       count();    // Update display or perform any other action related to counting
+      sendCounterToESP();
       lastExitObjectDetected = true;  // Set the flag to indicate an object has been detected
     }
   } else if (irSensorExitState == HIGH) { // No object detected
@@ -169,6 +171,13 @@ void loop() {
     // Check for laser detection or distance
   
 }
+
+void sendCounterToESP() {
+  // Send the counter value to ESP8266 when it changes
+  Serial.print("COUNTER:");
+  Serial.println(counter); // Sends "COUNTER:<value>" to the ESP8266
+}
+
 
 void count() {
   if (counter <= 0) {
