@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mosaic Of Memories</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='history.css') }}">
 </head>
+
 <body>
     <header>
         <button class="image-button" id="backBtn" onclick="returnToHome()">
@@ -23,26 +25,14 @@
                 </tr>
             </thead>
             <tbody>
+                {% for visitor in visitors %}
                 <tr>
-                    <td>The Rosetta Stone</td>
-                    <td>Ancient Egypt</td>
-                    <td>An artifact that helped decode Egyptian hieroglyphs.</td>
+                    <td>{{ visitor.id }}</td>
+                    <td>{{ visitor.visitor_id }}</td>
+                    <td>{{ visitor.body_temperature }}</td>
+                    <td>{{ visitor.date }}</td>
                 </tr>
-                <tr>
-                    <td>Venus de Milo</td>
-                    <td>Classical Greece</td>
-                    <td>A famous ancient Greek statue depicting the goddess Aphrodite.</td>
-                </tr>
-                <tr>
-                    <td>Starry Night</td>
-                    <td>19th Century</td>
-                    <td>Van Gogh's iconic painting of swirling night skies.</td>
-                </tr>
-                <tr>
-                    <td>Terracotta Army</td>
-                    <td>Ancient China</td>
-                    <td>Thousands of life-size terracotta soldiers buried with Emperor Qin Shi Huang.</td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -50,10 +40,11 @@
     <script>
         var backBtn = document.getElementById("backBtn");
         // Add a click event listener to the button
-        backBtn.addEventListener("click", function() {
+        backBtn.addEventListener("click", function () {
             // Redirect to the new HTML file
-            window.location.href = "index.html";
+            window.location.href = "http://127.0.0.1:5000";
         });
     </script>
 </body>
+
 </html>

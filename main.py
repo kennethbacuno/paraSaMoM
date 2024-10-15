@@ -62,6 +62,12 @@ def lights_turn_on():
 def lights_turn_off():
     return control_device('lights_off', "Lights turned off.")
 
+@app.route('/history.html')
+def visitor_list():
+    visitors = Visitor.query.all()
+    return render_template('history.html', visitors=visitors)
+
+
 def control_device(action, success_message):
     """Helper function to control devices."""
     try:
