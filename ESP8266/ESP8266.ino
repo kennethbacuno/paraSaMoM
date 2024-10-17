@@ -4,13 +4,14 @@
 // Replace with your network credentials
 const char* ssid = "ZTE_2.4G_KugzUh";
 const char* password = "2QEftxgL";
-
+int counterValue;
 // Create a web server on port 80
 ESP8266WebServer server(80);
+float temperatureValue = 0.0;
 
 void setup() {
-  Serial.begin(9600);   // Communication with Arduino on hardware serial (pins 0, 1)
-  
+  Serial.begin(9600);  // Communication with Arduino on hardware serial (pins 0, 1)
+
   // Connect to Wi-Fi
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
@@ -61,6 +62,11 @@ void setup() {
     Serial.println("LIGHTS_OFF");
   });
 
+  server.on("/get_counter", []() {
+    String message = String(counterValue);
+    server.send(200, "text/plain", message);
+  });
+
   server.begin();
   Serial.println("Server started");
 }
@@ -72,9 +78,16 @@ void loop() {
     String data = Serial.readStringUntil('\n');
     data.trim();
     if (data.startsWith("COUNTER:")) {
-      int counterValue = data.substring(8).toInt();
+      counterValue = data.substring(8).toInt();
       Serial.printf("Received counter: %d\n", counterValue);
+    } else if (data.startsWith("TEMP:")) {
+      temperatureValue = data.substring(5).toFloat();  // Extract temperature value
+      Serial.printf("Received temperature: %.2f\n", temperatureValue);
+      server.on("/visitor_db", []() {
+        String tempString = String(temperatureValue);
+        server.send(200, "text/plain", tempString);
+      });
+      server.begin();
     }
   }
 }
-

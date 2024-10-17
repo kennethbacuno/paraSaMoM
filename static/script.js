@@ -72,6 +72,40 @@ async function toggleExit() {
     }
 }
 
+async function fetchCounter() {
+    try {
+        const response = await fetch('/get_counter');
+        const data = await response.json();
+        if (data.status === "success") {
+            document.getElementById("counterDisplay").textContent = `${data.counter}/100`;
+        } else {
+            console.error("Failed to fetch counter:", data.message);
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+// Fetch counter every 2 seconds
+setInterval(fetchCounter, 500);
+
+// Call fetchCounter initially to show the current counter on page load
+fetchCounter();
+
+async function fetchTemp() {
+    try {
+        const response = await fetch('/visitor_db');
+        const data = await response.json();
+        if (data.status === "success") {
+            console.log("received_temp: ", data.message);
+        } else {
+            console.error("Failed to fetch counter:", data.message);
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+fetchTemp();
 
 function openNav() {
     document.querySelector(".image-button").style.display = "none";

@@ -147,6 +147,8 @@ void loop() {
         counter--;
         count();
         sendCounterToESP();
+        float temperature = 37.5;
+        sendTemperatureToESP(temperature);
         lastObjectDetected = true; // Set the flag to indicate an object has been detected
       }
     } else if (irSensorEntranceState == HIGH) { // No object detected
@@ -176,6 +178,11 @@ void sendCounterToESP() {
   // Send the counter value to ESP8266 when it changes
   Serial.print("COUNTER:");
   Serial.println(counter); // Sends "COUNTER:<value>" to the ESP8266
+}
+
+void sendTemperatureToESP(float temperature) {
+  Serial.print("TEMP:");  // Prefix the temperature with "TEMP:"
+  Serial.println(temperature);  // Send the temperature value to ESP8266
 }
 
 

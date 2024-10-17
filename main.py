@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify
 import requests
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -24,11 +25,41 @@ def create_database():
         db.create_all()  # Creates the database and tables
 
 # ESP8266 IP address (replace with the actual IP address)
-ESP8266_IP = 'http://192.168.1.6'  # Replace with your ESP8266's IP address
+ESP8266_IP = 'http://192.168.1.2'  # Replace with your ESP8266's IP address
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/get_counter', methods=['GET'])
+def get_counter():
+    try:
+        response = requests.get(f'{ESP8266_IP}/get_counter')
+        if response.status_code == 200:
+            counter_value = response.text
+            return jsonify({"status": "success", "counter": counter_value}), 200
+        else:
+            return jsonify({"status": "error", "message": "Failed to retrieve counter"}), 500
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
+    
+@app.route('/visitor_db', methods=['GET'])
+def store_visit_history():
+    try:
+        response = requests.get(f'{ESP8266_IP}/visitor_db')
+        if response.status_code == 200:
+            temp_value = response.text
+            new_visitor = Visitor(visitor_id=str(datetime.utcnow), body_temperature=temp_value, date=datetime.now())
+            db.session.add(new_visitor)
+            db.session.commit()
+            return jsonify({"status": "success", "counter": temp_value}), 200
+        else:
+            return jsonify({"status": "error", "message": "Failed to retrieve counter"}), 500
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 
 @app.route('/entrance_servo_on', methods=['GET'])
 def entrance_turn_on_servo():
