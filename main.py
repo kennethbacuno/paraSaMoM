@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify
+from flask import request
 import requests
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -49,6 +50,7 @@ def store_visit_history():
     try:
         response = requests.get(f'{ESP8266_IP}/visitor_db')
         if response.status_code == 200:
+            print(response.text)
             temp_value = response.text
             new_visitor = Visitor(visitor_id=str(datetime.utcnow), body_temperature=temp_value, date=datetime.now())
             db.session.add(new_visitor)
@@ -59,6 +61,23 @@ def store_visit_history():
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
         return jsonify({"status": "error", "message": str(e)}), 500
+    
+# @app.route('/data', methods=['POST'])
+# def receive_data():
+#     try:
+#         response = requests.get(f'{ESP8266_IP}/data')
+#         if response.status_code == 200:
+#             data = request.get_json()
+#             temp_value = data.get('temperature')
+#             new_visitor = Visitor(visitor_id=str(datetime.utcnow), body_temperature=data, date=datetime.now())
+#             db.session.add(new_visitor)
+#             db.session.commit()
+#             return jsonify({"status": "success", "counter": temp_value}), 200
+#         else:
+#             return jsonify({"status": "error", "message": "Failed to retrieve counter"}), 500
+#     except requests.exceptions.RequestException as e:
+#         print(f"Error: {e}")
+#         return jsonify({"status": "error", "message": str(e)}), 500
 
 
 @app.route('/entrance_servo_on', methods=['GET'])
@@ -116,4 +135,4 @@ def control_servo(action, success_message):
 
 if __name__ == '__main__':
     create_database()  # Create the database and tables before running the app
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

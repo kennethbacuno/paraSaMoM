@@ -87,25 +87,25 @@ async function fetchCounter() {
 }
 
 // Fetch counter every 2 seconds
-setInterval(fetchCounter, 500);
+setInterval(fetchCounter, 1000);
 
 // Call fetchCounter initially to show the current counter on page load
 fetchCounter();
 
-async function fetchTemp() {
-    try {
-        const response = await fetch('/visitor_db');
-        const data = await response.json();
-        if (data.status === "success") {
-            console.log("received_temp: ", data.message);
-        } else {
-            console.error("Failed to fetch counter:", data.message);
-        }
-    } catch (error) {
-        console.error("Error:", error);
-    }
-}
-fetchTemp();
+// async function fetchTemp() {
+//     try {
+//         const response = await fetch('/visitor_db');
+//         const data = await response.json();
+//         if (data.status === "success") {
+//             console.log("received_temp: ", data.message);
+//         } else {
+//             console.error("Failed to fetch counter:", data.message);
+//         }
+//     } catch (error) {
+//         console.error("Error:", error);
+//     }
+// }
+// fetchTemp();
 
 function openNav() {
     document.querySelector(".image-button").style.display = "none";

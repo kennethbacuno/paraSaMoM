@@ -1,5 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
+#include <ESP8266HTTPClient.h>
 
 // Replace with your network credentials
 const char* ssid = "ZTE_2.4G_KugzUh";
@@ -67,6 +68,11 @@ void setup() {
     server.send(200, "text/plain", message);
   });
 
+  server.on("/visitor_db", []() {
+    String message = String(temperatureValue);
+    server.send(200, "text/plain", message);
+  });
+
   server.begin();
   Serial.println("Server started");
 }
@@ -83,11 +89,8 @@ void loop() {
     } else if (data.startsWith("TEMP:")) {
       temperatureValue = data.substring(5).toFloat();  // Extract temperature value
       Serial.printf("Received temperature: %.2f\n", temperatureValue);
-      server.on("/visitor_db", []() {
-        String tempString = String(temperatureValue);
-        server.send(200, "text/plain", tempString);
-      });
-      server.begin();
     }
   }
 }
+
+

@@ -1,8 +1,13 @@
 #include <Servo.h>
 #include <LiquidCrystal_I2C.h>
+#include <Wire.H>
+#include <Adafruit_MLX90614.h>
+#include <SoftwareSerial.h>
 
+
+#define SDA_PIN A3
+#define SCL_PIN A2
 LiquidCrystal_I2C lcd(0x27, 16, 2);
-
 Servo myServo1;
 Servo myServo2;
 const int entrance_btn = 1;
@@ -43,8 +48,12 @@ bool relayState = LOW;
 // Variables for buzzer control
 unsigned long buzzerStartTime = 0;
 bool buzzerActive = false;
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+SoftwareSerial espSerial(2, 3);
+float bodyTemp = 0.0;
 
 void setup() {
+  Wire.begin();
   lcd.init();
   lcd.backlight();
 
@@ -63,10 +72,18 @@ void setup() {
   pinMode(laser_btn, INPUT);
   pinMode(relay_btn, INPUT);
   Serial.begin(9600);
+  espSerial.begin(115200);
 
   myServo1.write(0);
   myServo2.write(0);
   digitalWrite(laser_security, HIGH);
+  if (!mlx.begin()) {
+    Serial.println("Error connecting to MLX90614 sensor. Please check wiring.");
+    while (1);
+  }
+
+  Serial.println("MLX90614 Body Temperature Sensor Initialized.");
+
 }
 
 void loop() {
@@ -139,16 +156,18 @@ void loop() {
     }
   }
 
-  // Continuous IR sensor detection loop for entrance
+ // Continuous IR sensor detection loop for entrance
   if (myServo1.read() == 90) { // Check if the entrance servo is on
     if (irSensorEntranceState == LOW && counter > 0) { // Object detected
       if (!lastObjectDetected) {
-        Serial.println("May pumasok na tao!");
+        Serial.println("Someone entered!");
+
+        // Read and send body temperature when someone enters
+        bodyTemp = mlx.readObjectTempC();  // Store body temperature in global variable
         counter--;
         count();
         sendCounterToESP();
-        float temperature = 37.5;
-        sendTemperatureToESP(temperature);
+        sendTempToESP();
         lastObjectDetected = true; // Set the flag to indicate an object has been detected
       }
     } else if (irSensorEntranceState == HIGH) { // No object detected
@@ -157,22 +176,20 @@ void loop() {
   }
 
   if (myServo2.read() == 90) { // Check if the exit servo is on
-  if (irSensorExitState == LOW && counter >= 0 && counter < 100) { // Object detected and counter is within limit
-    if (!lastExitObjectDetected) {
-      Serial.println("May lumabas na tao!");
-      counter++;  // Increment counter only if it's less than 100
-      count();    // Update display or perform any other action related to counting
-      sendCounterToESP();
-      lastExitObjectDetected = true;  // Set the flag to indicate an object has been detected
+    if (irSensorExitState == LOW && counter >= 0 && counter < 100) { // Object detected and counter is within limit
+      if (!lastExitObjectDetected) {
+        Serial.println("Someone exited!");
+        counter++;
+        count();
+        sendCounterToESP();
+        lastExitObjectDetected = true;
+      }
+    } else if (irSensorExitState == HIGH) { // No object detected
+      lastExitObjectDetected = false;  // Reset exit object detection flag
     }
-  } else if (irSensorExitState == HIGH) { // No object detected
-    lastExitObjectDetected = false;  // Reset object detection flag
   }
 }
 
-    // Check for laser detection or distance
-  
-}
 
 void sendCounterToESP() {
   // Send the counter value to ESP8266 when it changes
@@ -180,9 +197,10 @@ void sendCounterToESP() {
   Serial.println(counter); // Sends "COUNTER:<value>" to the ESP8266
 }
 
-void sendTemperatureToESP(float temperature) {
-  Serial.print("TEMP:");  // Prefix the temperature with "TEMP:"
-  Serial.println(temperature);  // Send the temperature value to ESP8266
+void sendTempToESP() {
+  Serial.print("TEMP:"); 
+  Serial.print(bodyTemp);
+  Serial.println(" °C");
 }
 
 
