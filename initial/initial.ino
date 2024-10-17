@@ -99,7 +99,10 @@ void loop() {
   digitalWrite(trigPin, LOW);
   long duration = pulseIn(echoPin, HIGH);
   int distance = duration * 0.034 / 2;
-
+  // Serial.print("Distance: ");
+  // Serial.print(distance);
+  // Serial.println("cm");
+  // delay(2000);
   // Check for incoming serial commands
   if (Serial.available() > 0) {
     String command = Serial.readStringUntil('\n');  // Read the incoming command

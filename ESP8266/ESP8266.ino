@@ -10,6 +10,8 @@ int counterValue;
 ESP8266WebServer server(80);
 float temperatureValue = 0.0;
 
+String serverUrl = "http://192.168.1.8:5000/data";
+
 void setup() {
   Serial.begin(9600);  // Communication with Arduino on hardware serial (pins 0, 1)
 
@@ -67,12 +69,6 @@ void setup() {
     String message = String(counterValue);
     server.send(200, "text/plain", message);
   });
-
-  server.on("/visitor_db", []() {
-    String message = String(temperatureValue);
-    server.send(200, "text/plain", message);
-  });
-
   server.begin();
   Serial.println("Server started");
 }
@@ -89,8 +85,34 @@ void loop() {
     } else if (data.startsWith("TEMP:")) {
       temperatureValue = data.substring(5).toFloat();  // Extract temperature value
       Serial.printf("Received temperature: %.2f\n", temperatureValue);
+      sendToFlask(temperatureValue);
     }
   }
 }
 
+void sendToFlask(float temp_val) {
+  WiFiClient client;
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(client, serverUrl);
+    http.addHeader("Content-Type", "application/json");
 
+    String postData = "{\"Temperature\": " + String(temp_val) + "}";
+
+    // Send the HTTP POST request
+    int httpResponseCode = http.POST(postData);
+
+    // Check response
+    if (httpResponseCode > 0) {
+      String response = http.getString();
+      Serial.println(httpResponseCode);
+      Serial.println(response);
+    } else {
+      Serial.print("Error on sending POST: ");
+      Serial.println(httpResponseCode);
+    }
+
+    // End HTTP request
+    http.end();
+  }
+}

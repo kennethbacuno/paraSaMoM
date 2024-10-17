@@ -19,7 +19,6 @@
         <table class="museum-table">
             <thead>
                 <tr>
-                    <th>No.</th>
                     <th>Visitor ID</th>
                     <th>Body Temperature</th>
                     <th>Date</th>
@@ -28,7 +27,6 @@
             <tbody>
                 {% for visitor in visitors %}
                 <tr>
-                    <td>{{ visitor.id }}</td>
                     <td>{{ visitor.visitor_id }}</td>
                     <td>{{ visitor.body_temperature }}</td>
                     <td>{{ visitor.date }}</td>

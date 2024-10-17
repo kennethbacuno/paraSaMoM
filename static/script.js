@@ -85,11 +85,7 @@ async function fetchCounter() {
         console.error("Error:", error);
     }
 }
-
-// Fetch counter every 2 seconds
 setInterval(fetchCounter, 1000);
-
-// Call fetchCounter initially to show the current counter on page load
 fetchCounter();
 
 // async function fetchTemp() {
